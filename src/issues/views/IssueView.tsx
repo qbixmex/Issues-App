@@ -13,10 +13,10 @@ export const IssueView = () => {
         <Link to='./issues/list'>Go Back</Link>
       </div>
 
-      {/* Primer comentario */}
+      {/* First Comment */}
       <IssueComment body={ comment1 } />
 
-      {/* Comentario de otros */}
+      {/* Other Comments */}
       <IssueComment body={ comment2 } />
       <IssueComment body={ comment3 } />
     </div>
