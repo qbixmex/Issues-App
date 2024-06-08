@@ -14,6 +14,7 @@ export const useLabels = () => {
     queryKey: ['labels'],
     queryFn: fetchLabels,
     refetchOnWindowFocus: true,
+    staleTime: 1000 * 60 * 60, // 1 hour
   });
 
 
