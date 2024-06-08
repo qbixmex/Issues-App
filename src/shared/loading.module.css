@@ -1,0 +1,13 @@
+.loader {
+  display: block;
+  animation: spin-animation 1.5s infinite linear;
+}
+
+@keyframes spin-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
