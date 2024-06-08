@@ -1,7 +1,7 @@
 {
   "name": "git-issues",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.40.1",
     "@tanstack/react-query-devtools": "^5.40.1",
+    "axios": "^1.7.2",
     "bootstrap": "5.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
