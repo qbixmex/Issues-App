@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
 import { Issue, State } from '../interfaces';
+import { useNavigate } from 'react-router';
 
 type Props = {
     issue: Issue;
@@ -8,8 +9,13 @@ type Props = {
 
 export const IssueItem: FC<Props> = ({ issue }) => {
 
+    const navigate = useNavigate();
+
     return (
-        <div className="card mb-2 issue">
+        <div
+            className="card mb-2 issue"
+            onClick={() => navigate(`/issues/issue/${issue.number}`)}
+        >
             <div className="card-body d-flex align-items-center">
                 {
                     (issue.state === State.Open)
