@@ -31,13 +31,16 @@ export const IssueView = () => {
       {/* First Comment */}
       <IssueComment issue={ issueQuery.data } />
 
-      {/* Other Comments */}
       { commentsQuery.isLoading && ( <LoadingIcon className="mt-3" /> ) }
-      {
-        commentsQuery.data?.map(issue => (
-          <IssueComment key={issue.id} issue={ issue } />
-        ))
-      }
+
+      {!commentsQuery.isLoading && (commentsQuery.data?.length as number) > 0 && (
+        <>
+          <h2 className="mt-5 mb-3 fst-italic" style={{ fontSize: "2rem" }}>Comments</h2>
+          {commentsQuery.data?.map(issue => (
+            <IssueComment key={issue.id} issue={ issue } />
+          ))}
+        </>
+      )}
     </div>
   )
 }
