@@ -1,6 +1,7 @@
 /**
  * Sleep for a specified amount of time.
- * @param seconds Sleep time in seconds. Default is 1 second.
+ * @param seconds Sleep time in seconds.
+ * @default 1 second
  * @example
  * ```ts
  * await sleep(2);
