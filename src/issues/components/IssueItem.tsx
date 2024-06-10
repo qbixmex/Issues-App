@@ -32,7 +32,10 @@ export const IssueItem: FC<Props> = ({ issue }) => {
     const presetData = () => {
         queryClient.setQueryData(
             [ "issue", issueNumber ],
-            issue
+            issue,
+            {
+                updatedAt: new Date().getTime() + 1000 * 60 * 5, // 5 minutes
+            }
         );
     };
 
