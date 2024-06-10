@@ -1,9 +1,14 @@
+import { FC } from "react";
 import { FaSpinner } from "react-icons/fa";
 import styles from "./loading.module.css";
 
-const LoadingIcon = () => {
+type Props = {
+  className?: string;
+};
+
+const LoadingIcon: FC<Props> = ({ className }) => {
   return (
-    <FaSpinner className={styles.loader} size={50} />
+    <FaSpinner className={`${styles.loader}${ className ? ' ' + className : '' }`} size={50} />
   );
 };
 

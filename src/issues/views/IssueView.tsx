@@ -8,16 +8,15 @@ export const IssueView = () => {
   const params = useParams();
   const { id = "0" } = params;
 
-  const { issueQuery } = useIssue( +id );
-  const { isLoading, data } = issueQuery;
+  const { issueQuery, commentsQuery } = useIssue( +id );
 
-  if (isLoading) {
+  if (issueQuery.isLoading) {
     return (
       <LoadingIcon />
     );
   }
 
-  if (!data) {
+  if (!issueQuery.data) {
     return (
       <Navigate to="./issues/list" />
     );
@@ -30,11 +29,15 @@ export const IssueView = () => {
       </div>
 
       {/* First Comment */}
-      <IssueComment issue={ data } />
+      <IssueComment issue={ issueQuery.data } />
 
       {/* Other Comments */}
-      {/* <IssueComment body={ comment2 } /> */}
-      {/* <IssueComment body={ comment3 } /> */}
+      { commentsQuery.isLoading && ( <LoadingIcon className="mt-3" /> ) }
+      {
+        commentsQuery.data?.map(issue => (
+          <IssueComment key={issue.id} issue={ issue } />
+        ))
+      }
     </div>
   )
 }
