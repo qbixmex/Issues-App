@@ -9,7 +9,7 @@ const fetchLabels = async (): Promise<Label[]> => {
   return data;
 };
 
-export const useLabels = () => {
+const useLabels = () => {
   const labelsQuery = useQuery({
     queryKey: ['labels'],
     queryFn: fetchLabels,
@@ -41,3 +41,5 @@ export const useLabels = () => {
     labelsQuery
   };
 };
+
+export default useLabels;
