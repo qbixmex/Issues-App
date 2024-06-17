@@ -4,7 +4,7 @@ import { Issue } from "../interfaces";
 import { sleep } from "../../helpers";
 
 const getIssues = async (): Promise<Issue[]> => {
-  await sleep();
+  await sleep(2);
   const { data } = await githubAPI.get<Issue[]>("/issues");
   // console.log(data);
   return data;
