@@ -8,9 +8,12 @@ import { State } from '../interfaces';
 export const ListView = () => {
 
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
-  const [state, setState] = useState<State>();
+  const [selectedState, setSelectedState] = useState<State>();
 
-  const { issuesQuery: { isLoading, data } } = useIssues();
+  const { issuesQuery: { isLoading, data } } = useIssues({
+    selectedState,
+    selectedLabels,
+  });
 
   const onLabelChange = (labelName: string) => {
     (selectedLabels.includes(labelName))
@@ -27,9 +30,9 @@ export const ListView = () => {
             ? ( <LoadingIcon /> )
             : (
               <IssueList
-                issues={ data ?? [] }
-                state={state}
-                onStateChange={(newState) => setState(newState)}
+                issues={data ?? []}
+                state={selectedState}
+                onStateChange={(newState) => setSelectedState(newState)}
               />
             )
         }
