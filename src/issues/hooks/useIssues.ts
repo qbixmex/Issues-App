@@ -19,6 +19,14 @@ const getIssues = async (options: UseIssuesOptions): Promise<Issue[]> => {
     urlParams.append('state', selectedState);
   }
 
+  if (selectedLabels.length > 0) {
+    const labelsString = selectedLabels.join(','); //? Result example: 'label1,label2,label3
+    urlParams.append('labels', labelsString);
+  }
+
+  urlParams.append('page', '1');
+  urlParams.append('per_page', '5');
+
   const { data } = await githubAPI.get<Issue[]>('/issues', {
     params: urlParams,
   });
