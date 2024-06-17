@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router';
 import { useQueryClient } from '@tanstack/react-query';
-import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
-import { Issue, State } from '../interfaces';
+import { FiCheckCircle, FiInfo, FiMessageSquare } from 'react-icons/fi';
+import { useNavigate } from 'react-router';
+import { timeSince } from '../../helpers';
 import { getIssueInfo, getIssuesComments } from '../hooks/useIssue';
+import { Issue, State } from '../interfaces';
 
 type Props = {
   issue: Issue;
@@ -55,7 +56,7 @@ export const IssueItem: FC<Props> = ({ issue }) => {
         <div className="d-flex flex-column flex-fill px-2">
           <span>{issue.title} ...</span>
           <span className="issue-subinfo">
-            #{issue.number} opened {`2`} days ago by <span className='fw-bold'>{issue.user.login}</span>
+            #{issue.number} opened { timeSince(`${issue.created_at}`) } ago by <span className='fw-bold'>{issue.user.login}</span>
           </span>
           <div>
             { issue.labels.map(label => (
